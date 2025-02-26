@@ -46,7 +46,8 @@ For mongoDB, install this library for submiting data to cloud (make sure the ver
 ### Running Flask API 
 
 After this, open up [Script.py](https://github.com/RasyaDevansyah/Assignment2WeKnowNow/blob/main/FlaskAPI/Script.py) using VS Code and it will have these constant variables that need to be filled.
-	# Ubidots API Credentials (isi dengan sesuai)
+	
+ 	# Ubidots API Credentials (isi dengan sesuai)
 	TOKEN = " " 
 	DEVICE_ID = " "
 	UBIDOTS_URL = "https://industrial.api.ubidots.com/api/v1.6/devices/" + DEVICE_ID 
