@@ -19,7 +19,42 @@ Sebelum memulai, pastikan sudah menginstall applikasi Visual Studio Code, Thonny
 ### Prerequisites
 
 Requirements for the software and other tools to build, test and push 
+- [Python](https://www.python.org/downloads/) or via Microsoft Store
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Thonny IDE](https://thonny.org/)
 - [Ubidots Stem](https://ubidots.com/stem)
 - [Cloud MongoDB](https://cloud.mongodb.com/)
+
+Main IOT Component that will be in use
+- ESP32
+- DHT11
+- PIR Motion Sensor
+- LDR Sensor
+
+### Installing
+
+For running the Flask API, open visual studio and install Flask library using terminal.
+
+    $ pip install Flask
+
+For mongoDB, install this library for submiting data to cloud (make sure the version is compatible)
+
+	$ python -m pip install "pymongo[srv]"==3.11
+
+After this, opening up [Script.py](https://github.com/RasyaDevansyah/Assignment2WeKnowNow/blob/main/FlaskAPI/Script.py) will have these constant variables that need to be filled.
+	# Ubidots API Credentials (isi dengan sesuai)
+	TOKEN = " " 
+	DEVICE_ID = " "
+	UBIDOTS_URL = "https://industrial.api.ubidots.com/api/v1.6/devices/" + DEVICE_ID 
+	
+	# MongoDB Credentials (isi dengan sesuai)
+	MONGODB_URL = ""
+	DB_NAME = "WeKnowNowDatabase"
+ 	COLLECTION_NAME = "SensorData"
+
+
+You can get TOKEN and DEVICE_ID by logging in to [stem.ubidots](https://stem.ubidots.com/) and make an ESP32 device.    
+![image](https://github.com/user-attachments/assets/8224ca24-5f88-4996-a9c8-47be6ceba971)
+
+And for MongoDB, you can login to [MongoDBCloud](https://cloud.mongodb.com/) create a new cluster, go to "connect" and copy the connection string (be sure to replace the string "db_password" to your user password.
+![image](https://github.com/user-attachments/assets/fd3d3b1f-1466-4fe4-824b-86520b464722)
