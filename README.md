@@ -1,77 +1,119 @@
-## SIC Assignment 2 - We Know Now (UNI129)
+# SIC Assignment 2 - We Know Now (UNI129)
 
-Tugas membuat script ESP32 Micropython dan Flask REST API untuk visualisasi data menggunakan Ubidots dan menyimpannya ke MongoDB.
+Tugas ini berfokus pada pembuatan script ESP32 menggunakan MicroPython dan Flask REST API untuk visualisasi data di Ubidots serta penyimpanan ke MongoDB.
 
-#### Hasil Visualisasi dan data Ubidots dan database MongoDB
+## Hasil Visualisasi dan Data
+
+Data yang dikirimkan dari ESP32 akan divisualisasikan di Ubidots dan disimpan di MongoDB Cloud.
+
 ![image](https://github.com/user-attachments/assets/77a159e4-975f-493f-af63-23edc259d535)
+
 ![image](https://github.com/user-attachments/assets/11ddd3fa-147b-40b8-98fd-8874a3443bf2)
 
+## Sketch dan Foto Hasil Rangkaian ESP32
 
-#### Sketch dan Foto hasil rangkaian ESP32
+Berikut adalah rangkaian ESP32 beserta sensor yang digunakan:
+
 ![image](https://github.com/user-attachments/assets/283d4c1a-afe9-4583-9747-8ef6a23e7248)
+
 ![image](https://github.com/user-attachments/assets/79bcba79-8118-4712-823a-7b117f00732d)
+
 ![image](https://github.com/user-attachments/assets/2b2e2acf-8879-43ac-af12-e288bbebd112)
 
-## How to Set up 
+## Persiapan (Prerequisites)
 
-Sebelum memulai, pastikan sudah menginstall applikasi Visual Studio Code, Thonny IDE, dan sudah memiliki akun Ubidots dan MongoDB Cloud.
+### Software yang Dibutuhkan:
 
-### Prerequisites
-
-Requirements for the software and other tools to build, test and push 
-- [Python](https://www.python.org/downloads/) or via Microsoft Store
+- [Python](https://www.python.org/downloads/) (Bisa install via Microsoft Store juga)
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Thonny IDE](https://thonny.org/)
 - [Ubidots Stem](https://ubidots.com/stem)
-- [Cloud MongoDB](https://cloud.mongodb.com/)
+- [MongoDB Cloud](https://cloud.mongodb.com/)
 
-Main IOT Component that will be in use
-- ESP32
-- DHT11
-- PIR Motion Sensor
-- LDR Sensor
+### Komponen IoT yang Digunakan:
 
-### Installing
+- **ESP32 DIOD Micro USB Type**
+- **DHT11** (Temperature & Humidity Sensor)
+- **HC-SR501** (PIR Motion Sensor)
+- **LDR 5mm Sensor** & **Resistor**
+- **Jumper Cables**
+- **ESP32 BaseBoard**
+- **Breadboard**
 
-For running the Flask API, open visual studio and install Flask library using terminal.
+## Instalasi
 
-    $ pip install Flask
+### Install Flask API
 
-For mongoDB, install this library for submiting data to cloud (make sure the version is compatible)
+Jalankan perintah berikut di terminal untuk menginstal Flask:
 
-	$ python -m pip install "pymongo[srv]"==3.11
+```sh
+pip install Flask
+```
 
-## Running the Program
+### Install MongoDB Library
 
-### Running Flask API 
+Untuk menghubungkan ke MongoDB Cloud, install library berikut:
 
-After this, open up [Script.py](https://github.com/RasyaDevansyah/Assignment2WeKnowNow/blob/main/FlaskAPI/Script.py) using VS Code and it will have these constant variables that need to be filled.
-	
- 	# Ubidots API Credentials (isi dengan sesuai)
-	TOKEN = " " 
-	DEVICE_ID = " "
-	UBIDOTS_URL = "https://industrial.api.ubidots.com/api/v1.6/devices/" + DEVICE_ID 
-	
-	# MongoDB Credentials (isi dengan sesuai)
-	MONGODB_URL = ""
-	DB_NAME = "WeKnowNowDatabase"
- 	COLLECTION_NAME = "SensorData"
+```sh
+python -m pip install "pymongo[srv]"==3.11
+```
 
+## Menjalankan Program
 
-You can get TOKEN and DEVICE_ID by logging in to [stem.ubidots](https://stem.ubidots.com/) and make an ESP32 device.    
+### 1. Setup Flask API
+
+Buka file [Script.py](https://github.com/RasyaDevansyah/Assignment2WeKnowNow/blob/main/FlaskAPI/Script.py) menggunakan Visual Studio Code, lalu isi bagian credential berikut:
+
+```python
+# Ubidots API Credentials
+TOKEN = " "
+DEVICE_ID = " "
+UBIDOTS_URL = "https://industrial.api.ubidots.com/api/v1.6/devices/" + DEVICE_ID
+
+# MongoDB Credentials
+MONGODB_URL = ""
+DB_NAME = "WeKnowNowDatabase"
+COLLECTION_NAME = "SensorData"
+```
+
+Untuk mendapatkan **TOKEN** dan **DEVICE\_ID**, login ke [stem.ubidots](https://stem.ubidots.com/) dan buat device ESP32.
+
 ![image](https://github.com/user-attachments/assets/8224ca24-5f88-4996-a9c8-47be6ceba971)
 
-And for MongoDB, you can login to [MongoDBCloud](https://cloud.mongodb.com/) create a new cluster, go to "connect" and copy the connection string (be sure to replace the string "db_password" to your user password.)
+Untuk **MongoDB**, login ke [MongoDB Cloud](https://cloud.mongodb.com/), buat cluster baru, lalu klik **"connect"** dan copy connection string-nya (ganti `db_password` dengan password akun MongoDB kamu).
+
 ![image](https://github.com/user-attachments/assets/fd3d3b1f-1466-4fe4-824b-86520b464722)
 
+Setelah diisi, jalankan Flask API dan program akan memberikan URL dengan LAN IP address.
 
-After filling the credentials, you can run the program and it will make a URL to your LAN IP address
 ![image](https://github.com/user-attachments/assets/f6c8a1de-f8ca-42d2-b356-c031e737a5b0)
 
-### Running Micropython
+### 2. Setup MicroPython di ESP32
 
-Open [ESP32Micro.py](https://github.com/RasyaDevansyah/Assignment2WeKnowNow/blob/main/Esp32/ESP32Micro.py) using Thonny IDE and plug in your IOT device to your machine. 
+Buka file [ESP32Micro.py](https://github.com/RasyaDevansyah/Assignment2WeKnowNow/blob/main/Esp32/ESP32Micro.py) menggunakan **Thonny IDE** dan sambungkan ESP32 ke komputer.
 
-Next, Fill out these constant variables. (you can paste the URL LAN IP address from the Flask to the URL variable.)
+Isi variabel URL dengan LAN IP address dari Flask API.
+
 ![image](https://github.com/user-attachments/assets/3ceb73d7-ee08-4db1-b0e6-322b7faf871c)
-NOTE: Make sure to connect to the same WIFI network as the Flask API or it will not work.
+
+⚠️ **Catatan**: Pastikan ESP32 dan Flask API berada di jaringan WiFi yang sama! Atau program tidak bisa berjalan.
+
+## Rangkaian dan Pin ESP32
+
+Dalam proyek ini, 3 sensor utama digunakan:
+
+- **DHT11** → Temperatur & Kelembaban
+- **LDR** → Sensor Cahaya
+- **PIR** → Sensor Gerak
+
+Berikut adalah variable pin yang digunakan (bisa disesuaikan dengan rangkaian):
+
+![image](https://github.com/user-attachments/assets/170bcb1e-c643-4d89-ae7b-0971508392a2)
+
+![image](https://github.com/user-attachments/assets/beed9c38-eb93-4432-9799-e241e3fc9598)
+
+## Jalankan MicroPython di ESP32
+
+Setelah semua siap, jalankan MicroPython di ESP32!🎉
+
+Sekarang ESP32 akan mulai mengumpulkan data dan mengirimkannya ke Flask API. Data tersebut akan ditampilkan di **Ubidots** dan juga disimpan di **MongoDB Cloud**.
