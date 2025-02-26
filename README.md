@@ -74,3 +74,4 @@ Open [ESP32Micro.py](https://github.com/RasyaDevansyah/Assignment2WeKnowNow/blob
 
 Next, Fill out these constant variables. (you can paste the URL LAN IP address from the Flask to the URL variable.)
 ![image](https://github.com/user-attachments/assets/3ceb73d7-ee08-4db1-b0e6-322b7faf871c)
+NOTE: Make sure to connect to the same WIFI network as the Flask API or it will not work.
