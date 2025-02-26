@@ -117,3 +117,28 @@ Berikut adalah variable pin yang digunakan (bisa disesuaikan dengan rangkaian):
 Setelah semua siap, jalankan MicroPython di ESP32!🎉
 
 Sekarang ESP32 akan mulai mengumpulkan data dan mengirimkannya ke Flask API. Data tersebut akan ditampilkan di **Ubidots** dan juga disimpan di **MongoDB Cloud**.
+
+## Contributors
+
+### Winona Patricia Pangestu
+* **Universitas**: Bina Nusantara University
+* **GitHub**: [wengnong](https://github.com/wengnong)
+* **Program Studi**: Computer Science
+* **Fakultas**: School of Computer Science
+
+### Muhammad Rasya Devansyah
+* **Universitas**: Bina Nusantara University
+* **GitHub**: [rasyadevansyah](https://github.com/rasyadevansyah)
+* **Program Studi**: Computer Science
+* **Fakultas**: School of Computer Science
+
+### Agnetta Indira Revata
+* **Universitas**: Bina Nusantara University
+* **Program Studi**: Computer Science
+* **Fakultas**: School of Computer Science
+
+### Ariel Raynara Zhang
+* **Universitas**: Bina Nusantara University
+* **GitHub**: [notbenjackson](https://github.com/notbenjackson)
+* **Program Studi**: Computer Science
+* **Fakultas**: School of Computer Science
