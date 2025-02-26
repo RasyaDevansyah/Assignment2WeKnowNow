@@ -41,9 +41,12 @@ For mongoDB, install this library for submiting data to cloud (make sure the ver
 
 	$ python -m pip install "pymongo[srv]"==3.11
 
-After this, opening up [Script.py](https://github.com/RasyaDevansyah/Assignment2WeKnowNow/blob/main/FlaskAPI/Script.py) will have these constant variables that need to be filled.
-	
- 	# Ubidots API Credentials (isi dengan sesuai)
+## Running the Program
+
+### Running Flask API 
+
+After this, open up [Script.py](https://github.com/RasyaDevansyah/Assignment2WeKnowNow/blob/main/FlaskAPI/Script.py) using VS Code and it will have these constant variables that need to be filled.
+	# Ubidots API Credentials (isi dengan sesuai)
 	TOKEN = " " 
 	DEVICE_ID = " "
 	UBIDOTS_URL = "https://industrial.api.ubidots.com/api/v1.6/devices/" + DEVICE_ID 
@@ -57,5 +60,16 @@ After this, opening up [Script.py](https://github.com/RasyaDevansyah/Assignment2
 You can get TOKEN and DEVICE_ID by logging in to [stem.ubidots](https://stem.ubidots.com/) and make an ESP32 device.    
 ![image](https://github.com/user-attachments/assets/8224ca24-5f88-4996-a9c8-47be6ceba971)
 
-And for MongoDB, you can login to [MongoDBCloud](https://cloud.mongodb.com/) create a new cluster, go to "connect" and copy the connection string (be sure to replace the string "db_password" to your user password.
+And for MongoDB, you can login to [MongoDBCloud](https://cloud.mongodb.com/) create a new cluster, go to "connect" and copy the connection string (be sure to replace the string "db_password" to your user password.)
 ![image](https://github.com/user-attachments/assets/fd3d3b1f-1466-4fe4-824b-86520b464722)
+
+
+After filling the credentials, you can run the program and it will make a URL to your LAN IP address
+![image](https://github.com/user-attachments/assets/f6c8a1de-f8ca-42d2-b356-c031e737a5b0)
+
+### Running Micropython
+
+Open [ESP32Micro.py](https://github.com/RasyaDevansyah/Assignment2WeKnowNow/blob/main/Esp32/ESP32Micro.py) using Thonny IDE and plug in your IOT device to your machine. 
+
+Next, Fill out these constant variables. (you can paste the URL LAN IP address from the Flask to the URL variable.)
+![image](https://github.com/user-attachments/assets/3ceb73d7-ee08-4db1-b0e6-322b7faf871c)
